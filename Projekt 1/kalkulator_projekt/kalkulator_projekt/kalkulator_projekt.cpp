@@ -58,10 +58,12 @@ int main()
 	cout << "------------------------------------\n";
 	while (true) {
 		float a, b;
-		char oper;
+		char oper = ' ';
 		cout << ">>";
 		cin >> a >> oper >> b;
+		cout << "a: " << a << "; b: " << b << " opr: " << oper << "\n";
 		cout << "output: " << calculate(a, b, oper) << "\n";
+
 	}
 
 }
