@@ -81,9 +81,9 @@ def delete():
         print("Brak opcji o numerze",index+1)
     if index == lista.getLength():
         return
-        lista.pop(index)
-        print("Pomyślnie usunięto", str(index+1), "element!")
-        input(">>Naciśnij Enter aby kontynuować...")
+    lista.pop(index)
+    print("Pomyślnie usunięto", str(index+1), "element!")
+    input(">>Naciśnij Enter aby kontynuować...")
 
 def edit():
     if lista.getLength() == 0:
