@@ -100,12 +100,11 @@ def rssToHTML(soup):
 
 def main():
     
-    url = "https://blog.mozilla.org/"
-    print(sys.argv)
+    url = "https://blog.unity3d.com/"
     if len(sys.argv) > 1:
         url = sys.argv[1]
     else:
-        _url = input("Type blog URL default: https://blog.mozilla.org/\n>>(https://blog.mozilla.org/) ")
+        _url = input("Type blog URL: \n>>(default: "+url+") ")
         if not _url == '':
           url = _url
     src, message = getRss(url)
