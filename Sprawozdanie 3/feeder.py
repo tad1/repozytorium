@@ -8,12 +8,16 @@ from bs4 import BeautifulSoup
 from bs4.element import CData
 
 
-def getRss(url):
+def parse_url(url):
     if not(url[0:8] == 'https://' or url[0:7] == 'http://'):
 
         url = "https://" + url
     if(url[len(url)-1] != "/"):
         url += "/"
+    return url
+
+def get_rss(url):
+    
     print("accesing " + url+" feed")
     result = requests.get(url + 'rss')
     if(not result):
@@ -21,7 +25,7 @@ def getRss(url):
     return result.content, ''
 
 
-def rssToHTML(soup):
+def rss_to_HTML(soup):
     items = soup('item')
     #create output html
     output_HTML = """<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><title>Feeder</title></head><body></body></html>"""
@@ -68,8 +72,7 @@ def rssToHTML(soup):
 
         output_HTML.find('body').append(div)
 
-    #Add CSS
-    articles = output_HTML('article')
+    #---Add CSS
     body = output_HTML.find('body')
     head = output_HTML.find('head')
     font_rel = output_HTML.new_tag('link')
@@ -80,7 +83,7 @@ def rssToHTML(soup):
     font_rel['rel'] = "stylesheet"
     head.append(font_rel)
 
-    #in case when Roboto font don't work (getting offline)
+    #in case when Roboto font don't work (offline)
     output_HTML.find('html')['style'] = 'font-family: Inter'
 
     body['style'] = 'font-family: Roboto'
@@ -98,16 +101,33 @@ def rssToHTML(soup):
 
     return output_HTML
 
-def main():
-    
-    url = "https://blog.unity3d.com/"
+def get_url(default_url):
+    url = default_url
     if len(sys.argv) > 1:
         url = sys.argv[1]
     else:
         _url = input("Type blog URL: \n>>(default: "+url+") ")
         if not _url == '':
           url = _url
-    src, message = getRss(url)
+    return url
+
+def parse_src(src):
+    src = re.sub(rb'<link>', b'<_link>', src)
+    src = re.sub(rb'</link>', b'</_link>', src)
+    return src
+
+def save_html_doc(html_doc):
+    file = codecs.open('feed.html', 'w', "utf-8")
+    file.write(html_doc.prettify())
+    file.close()
+
+
+def main():
+    
+    url = "https://blog.unity3d.com/"
+    url = parse_url(get_url(url))
+    src, message = get_rss(url)
+
     if not src:
         print(message)
         input(">>Press ENTER to continue...")
@@ -116,24 +136,19 @@ def main():
     print('parsing rss...')
 
     #replace <link> with <_link> to prevent parser error
-    src = re.sub(rb'<link>', b'<_link>', src)
-    src = re.sub(rb'</link>', b'</_link>', src)
+    src = parse_src(src)
+
     soup = BeautifulSoup(src, features="lxml")
     rss = soup.find("rss")
     if rss['version'] != '2.0':
         print("Error: this rss version is not supported! Your version:", rss['version'] ,"Only 2.0!")
 
-    html_doc = rssToHTML(soup)
-
-    file = codecs.open('index.html', 'w', "utf-8")
-    file.write(html_doc.prettify())
-    file.close()
+    save_html_doc(rss_to_HTML(soup))
+    
     #get path of created file
-    path = "start " + os.getcwd() + "\\index.html"
+    path = os.getcwd() + "\\feed.html"
     print("done.")
-    os.system(path)
+    os.system('"'+path+'"')
 
 
-
-if __name__ == "__main__":
-    main()
+main()
