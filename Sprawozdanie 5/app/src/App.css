@@ -1,0 +1,171 @@
+.App {
+  text-align: center;
+}
+
+
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(48, 58, 63);
+  color: white;
+} 
+
+.nav-links{
+  font-size: 3vh;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a{
+  color: white;
+}
+
+
+
+.productItem{
+  align-self: flex-start;
+
+  display: flex;
+  color: white;
+}
+
+.logo{
+  height: 6vh;
+}
+
+.productList{
+  padding: 0px;
+  padding-left: 30%;
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  list-style: none;
+  font-size: 3vh;
+}
+
+.productListName{
+  color: #00B55E;
+
+  font-size: 4vh;
+}
+
+/* Shop */
+.productContainer{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-around;
+}
+
+.flexBreak{
+  flex-basis: 100%;
+}
+
+.productInfo{
+  
+  margin-top: 0;
+  font-size: 2vh;
+}
+
+
+
+.productInfo h3{
+  
+  margin: .4em;
+  font-weight: 600;
+}
+
+.descriptionText{
+
+  font-size: 2.8vh;
+}
+
+
+
+.productDescription{
+  
+  width: 70%;
+  margin: auto;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+.productName{
+  
+  flex-basis: 100%;
+  font-size: 3.5vh;
+}
+
+.goBackButtonContainer{
+  color: white;
+}
+
+.goBackButton {
+  
+  font-size: 2.2vh;
+  padding: 10%;
+  margin: auto;
+  margin-top: 1em;
+  width: fit-content;
+
+}
+
+
+
+
+/* About Page*/
+
+.aboutName{
+  color: #00B55E;
+  font-size: 4.3vh;
+}
+
+.about{
+  font-size: 2.5vh;
+  width: 70%;
+  margin: auto;
+}
+
+.contactInfoName{
+  color: #00B55E;
+
+  font-size: 3.4vh;
+}
+
+.contactInfo{
+  font-size: 2.2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInfo h3{
+  font-weight: 400;
+  margin: 5px;
+}
+
+/* Home Page */
+.shopLink{
+  font-size: 3vh;
+  color: white;
+}
+
+.logoText{
+  color: #00B55E;
+  margin-top: 0px;
+  font-size: 4.6vh;
+  font-weight: 600;
+}
+
+.homeImage{
+  margin-top: 1%;
+  height: 20vh;
+}
