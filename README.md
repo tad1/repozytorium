@@ -1,10 +1,8 @@
-# repozytorium
-**Projekt 1**: podstawy korzystania z GitHuba, projekt kalkulatora w C++ (VisualStudio) 
+This repository is an artifact from remote monthly apprenticeships at a local university.
 
-**Projekt 2**: lista zadań (to-do-list) napisana w pythonie 
-
-**Projekt 3**: web scrapper zapisujący linki do wszyskich obrazów z dowolnej strony
-
-**Projekt 4**: aplikacja back-end napisana w Django REST dla sklepu
-
-**Projekt 5**: aplikacja front-end napisana w React łącząca się z aplikacją z poprzedniego projektu
+**Project 1**: basics of GitHub; calculator written in C++ (VisualStudio)\
+**Project 2**: To-Do List in Python\
+**Project 3**: Web Scrapper that saves all image links from any website\
+**Project 4**: E-commerce back-end in Django REST\
+**Project 5**: E-commerce front-end in React that uses back-end from the previous project\
+**Project 6 ([separate repo](https://github.com/tad1/sugiBot/))**: A discord bot using Node.js
